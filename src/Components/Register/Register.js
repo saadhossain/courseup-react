@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/UserContext';
 
 const Register = () => {
+    const {userRegister} = useContext(AuthContext);
+    const handleRegister = (e) => {
+        e.preventDefault()
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.email.value;
+        userRegister(email, password)
+        .then((result)=>{
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(err => {
+            console.error(err)
+        })
+    }
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col">
@@ -9,24 +25,24 @@ const Register = () => {
                     <h1 className="text-4xl font-bold">Register Your Account!</h1>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <form className="card-body">
+                    <form onSubmit={handleRegister} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Enter Your Name</span>
                             </label>
-                            <input type="text" placeholder="Enter Full Name" className="input input-bordered" />
+                            <input type="text" name='name' placeholder="Enter Full Name" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Enter Your Email</span>
                             </label>
-                            <input type="email" placeholder="Email Address" className="input input-bordered" />
+                            <input type="email" name='email' placeholder="Email Address" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Enter Password</span>
                             </label>
-                            <input type="password" placeholder="Enter Password" className="input input-bordered" />
+                            <input type="password" name='password' placeholder="Enter Password" className="input input-bordered" />
                             <label className="label">
                                 <Link to='/login' className="label-text-alt link link-hover">Already Have an Account? Login</Link>
                             </label>

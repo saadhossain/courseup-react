@@ -9,7 +9,6 @@ function App() {
   return (
     <div>
       <RouterProvider router={router}>
-        <h1>Hello World!</h1>
         <ToastContainer></ToastContainer>
       </RouterProvider>
     </div>
