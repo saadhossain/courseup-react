@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "React - The Complete Guide (incl Hooks, React Router, Redux)",
+    "image": "https://i.ibb.co/PmCr6Hh/1362070-b9a1-2.jpg",
+    "price": "13.99",
+    "tutor": "Schwarzmüller",
+    "rating": {"rate": "4.7","total": "57,389"},
+    "description": "Dive in and learn React.js from scratch! Learn Reactjs, Hooks, Redux, React Routing, Animations, Next.js and way more!"
+  },
+  {
+    "id": 2,
+    "name": "Node.js, Express, MongoDB & More: The Complete Bootcamp 2022",
+    "image": "https://i.ibb.co/LJRRFQS/851712-fc61-6.jpg",
+    "price": "13.99",
+    "tutor": "Jonas Schmedtmann",
+    "rating": 
+      {
+        "rate": "4.8", "total": "39,027"
+      },
+    "description": "Master Node by building a real-world RESTful API and web app (with authentication, Node.js security, payments & more)"
+  },
+  {
+    "id": 3,
+    "name": "The Complete JavaScript Course 2022: From Zero to Expert!",
+    "image": "https://i.ibb.co/Z1GCD1K/1672410-9ff1-5.jpg",
+    "price": "13.99",
+    "tutor": "Jonas Schmedtmann",
+    "rating": 
+      {
+        "rate": "4.9", "total": "37,271"
+      },
+    "description": "The modern JavaScript course for everyone! Master JavaScript with projects, challenges and theory. Many courses in one!"
+  },
+  {
+    "id": 4,
+    "name": "Advanced CSS and Sass: Flexbox, Grid, Animations and More!",
+    "image": "https://i.ibb.co/qdfyv5T/1026604-790b-2.jpg",
+    "price": "13.99",
+    "tutor": "Jonas Schmedtmann",
+    "rating":
+      {
+        "rate": "4.6", "total": "27,209"
+      },
+    "description": "The most advanced and modern CSS course on the internet: master flexbox, CSS Grid, responsive design, and so much more."
+  }
+]

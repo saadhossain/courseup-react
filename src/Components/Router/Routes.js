@@ -15,7 +15,7 @@ export const routes = createBrowserRouter([
         children:[
             {path:'/', element:<Home></Home>},
             {path:'/home', element:<Home></Home>},
-            {path:'/courses', element:<Courses></Courses>},
+            {path:'/courses', loader: async () => fetch('courses.json') , element:<Courses></Courses>},
             {path:'/offer', element:<Offer></Offer>},
             {path:'/login', element:<Login></Login>},
             {path:'/register', element:<Register></Register>}
