@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext';
 
 const Register = () => {
-    const {userRegister} = useContext(AuthContext);
+    const {userRegister, verifyEmail} = useContext(AuthContext);
     const handleRegister = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -13,6 +13,12 @@ const Register = () => {
         .then((result)=>{
             const user = result.user;
             console.log(user);
+            //Send Email Verification Link
+            verifyEmail()
+            .then(()=>{
+                alert('check your email')
+            })
+            form.reset()
         })
         .catch(err => {
             console.error(err)

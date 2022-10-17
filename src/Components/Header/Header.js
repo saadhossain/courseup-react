@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from './book.png'
 import { Bars3Icon, XMarkIcon} from '@heroicons/react/24/solid'
+import { AuthContext } from '../../Context/UserContext';
 const Header = () => {
+    const {user, logOut} = useContext(AuthContext);
+
     const [expand, setExpand] = useState(false);
+    //Logout function
+    const handleLogOut = () => {
+        logOut()
+    }
     return (
         <div className='bg-violet-500 text-white'>
             <div className='flex w-10/12 mx-auto items-center justify-between py-2'>
@@ -16,7 +23,18 @@ const Header = () => {
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/courses'>Courses</Link></li>
                         <li><Link to='/offer'>Offer</Link></li>
-                        <li><Link to='/login'>Login</Link></li>
+                        <span>
+                            {
+                                user?.uid && <Link>{user.email}</Link>
+                            }
+                        </span>
+                        <span>
+                            {
+                                user?.uid ? 
+                                <li><Link onClick={handleLogOut}>LogOut</Link></li> :
+                                <li><Link to='/login'>Login</Link></li>
+                            }
+                        </span>
                     </ul>
                     <div className='h-8 w-8 md:hidden' onClick={()=> setExpand(!expand)}>
                         {
