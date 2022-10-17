@@ -1,6 +1,5 @@
 import { StarIcon } from '@heroicons/react/24/solid';
 import React from 'react';
-import placeholder from './home-banner.jpg'
 const CourseSingle = ({ course }) => {
     const { image, name, price, tutor, rating } = course;
     return (
