@@ -1,12 +1,12 @@
 import { StarIcon } from '@heroicons/react/24/solid';
 import React from 'react';
-
+import placeholder from './home-banner.jpg'
 const CourseSingle = ({ course }) => {
     const { image, name, price, tutor, rating } = course;
     return (
         <div>
             <div className="card w-full bg-base-100 shadow-xl">
-                <figure><img src={image} alt={name} className='w-full rounded-t' /></figure>
+                <figure><img src={image && placeholder} alt={name} className='w-full rounded-t' /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{name.length > 30 ? name.slice(0, 30) : name}</h2>
                     <h2 className="card-title">Price: ${price}</h2>
@@ -17,7 +17,7 @@ const CourseSingle = ({ course }) => {
                         <p>({rating.total})</p>
                     </span>
                     <div className="card-actions justify-center my-5">
-                        <button className="btn btn-primary">Enroll Now</button>
+                        <button className="btn btn-primary w-full">Enroll Now</button>
                     </div>
                 </div>
             </div>

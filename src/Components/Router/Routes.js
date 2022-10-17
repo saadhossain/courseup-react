@@ -21,7 +21,7 @@ export const routes = createBrowserRouter([
                 path:'/courses', 
                 loader:courseData, 
                 element:<PrivateRouter><Courses></Courses></PrivateRouter>},
-            {path:'/offer', element:<Offer></Offer>},
+            {path:'/offer', loader:courseData, element:<Offer></Offer>},
             {path:'/login', element:<Login></Login>},
             {path:'/register', element:<Register></Register>}
         ],
