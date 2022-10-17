@@ -6,7 +6,7 @@ const CourseSingle = ({ course }) => {
     return (
         <div>
             <div className="card w-full bg-base-100 shadow-xl">
-                <figure><img src={image && placeholder} alt={name} className='w-full rounded-t' /></figure>
+                <figure><img src={image} alt={name} className='w-full rounded-t' /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{name.length > 30 ? name.slice(0, 30) : name}</h2>
                     <h2 className="card-title">Price: ${price}</h2>
