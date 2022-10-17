@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/UserContext';
 
 const Register = () => {
     const {userRegister, verifyEmail} = useContext(AuthContext);
+    const [message, setMessage] = useState('')
     const handleRegister = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -12,11 +14,11 @@ const Register = () => {
         userRegister(email, password)
         .then((result)=>{
             const user = result.user;
-            console.log(user);
+            setMessage('Registration completed successfully...')
             //Send Email Verification Link
             verifyEmail()
             .then(()=>{
-                alert('check your email')
+                toast.success('Email Verification has been Sent', {autoClose:1000})
             })
             form.reset()
         })
@@ -31,6 +33,7 @@ const Register = () => {
                     <h1 className="text-4xl font-bold">Register Your Account!</h1>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <p className='text-green-600'>{message}</p>
                     <form onSubmit={handleRegister} className="card-body">
                         <div className="form-control">
                             <label className="label">

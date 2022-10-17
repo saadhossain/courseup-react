@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
+import { courseData } from '../../Context/courseData';
 import Courses from '../Courses/Courses';
 import ErrorPage from '../Error/ErrorPage';
 import Home from '../Home/Home';
@@ -14,11 +15,11 @@ export const routes = createBrowserRouter([
         path:'/',
         element:<Main></Main>,
         children:[
-            {path:'/', element:<Home></Home>},
+            {path:'/', loader:courseData, element:<Home></Home>},
             {path:'/home', element:<Home></Home>},
             {
                 path:'/courses', 
-                loader: async () => fetch('courses.json') , 
+                loader:courseData, 
                 element:<PrivateRouter><Courses></Courses></PrivateRouter>},
             {path:'/offer', element:<Offer></Offer>},
             {path:'/login', element:<Login></Login>},
