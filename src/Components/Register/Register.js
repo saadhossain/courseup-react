@@ -10,16 +10,16 @@ const Register = () => {
         e.preventDefault()
         const form = e.target;
         const email = form.email.value;
-        const password = form.email.value;
+        const password = form.password.value;
         userRegister(email, password)
         .then((result)=>{
-            const user = result.user;
             setMessage('Registration completed successfully...')
             //Send Email Verification Link
             verifyEmail()
             .then(()=>{
-                toast.success('Email Verification has been Sent', {autoClose:1000})
+
             })
+            toast.success('Email Verification has been Sent', {autoClose:1000})
             form.reset()
         })
         .catch(err => {

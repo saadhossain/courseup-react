@@ -1,26 +1,31 @@
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, signOut } from 'firebase/auth'
-import app from '../Firebase/firebase.init'
+import app from '../Firebase/firebase.init';
 
 export const AuthContext = createContext()
 const UserContext = ({ children }) => {
     const auth = getAuth(app)
+
+    const [user, setUser] = useState({})
+    const [loading, setLoading] = useState(true)
     //Create User Account with email and password
     const userRegister = (email, password) => {
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
     //Verify User email while registration
     const verifyEmail = () => {
+        setLoading(true)
         return sendEmailVerification(auth.currentUser)
     }
     //Login user 
-    const userSignIn = (email, password) =>{
-        return signInWithEmailAndPassword(auth, email, password)
+    const userSignIn = (userEmail, userPassword) => {
+        setLoading(true)
+        return signInWithEmailAndPassword(auth, userEmail, userPassword)
     }
-    const [user, setUser] = useState({})
-    const [loading, setLoading] = useState(true)
+
     //Manage User
-    useEffect(()=>{
+    useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             setLoading(false)
@@ -30,9 +35,10 @@ const UserContext = ({ children }) => {
         }
     }, [])
     const logOut = () => {
+        setLoading(true)
         return signOut(auth)
     }
-    const userInfo = {user, userRegister, verifyEmail, userSignIn, logOut, loading}
+    const userInfo = { user, userRegister, verifyEmail, userSignIn, logOut, loading }
     return (
         <div>
             <AuthContext.Provider value={userInfo}>

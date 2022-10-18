@@ -13,7 +13,7 @@ const CourseSingle = ({ course }) => {
                     <span className='flex justify-between'>
                         Ratings: <StarIcon className='text-[#F1DD69] w-5'></StarIcon>
                         <p> {rating.rate}</p>
-                        <p>({rating.total})</p>
+                        <p>Total:({rating.total})</p>
                     </span>
                     <div className="card-actions justify-center my-5">
                         <button className="btn btn-primary w-full">Enroll Now</button>
